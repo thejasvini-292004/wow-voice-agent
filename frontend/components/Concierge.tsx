@@ -163,8 +163,10 @@ export default function Concierge() {
 
       {!call.configured && (
         <div className="notice" role="alert">
-          <strong>Add your Vapi details to start.</strong> Copy <code>.env.example</code> to{" "}
-          <code>.env.local</code>, set the public key and assistant ID, then restart the app.
+          <strong>Add your Vapi details to start.</strong> Set{" "}
+          <code>NEXT_PUBLIC_VAPI_PUBLIC_KEY</code> and <code>NEXT_PUBLIC_VAPI_ASSISTANT_ID</code>: in{" "}
+          <code>.env.local</code> when running locally, or in your host&apos;s environment variables when
+          deployed. Then rebuild the app.
         </div>
       )}
       {!call.online && (
