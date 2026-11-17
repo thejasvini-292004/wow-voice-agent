@@ -322,7 +322,7 @@ export default function Concierge() {
                   </div>
                 ))}
               </dl>
-              {summaryData && (
+              {summaryData && (summaryData.stored || summaryData.storageNote) && (
                 <p className={`saved ${summaryData.stored ? "is-saved" : ""}`}>
                   {summaryData.stored ? "Saved to your leads database" : `Not saved. ${summaryData.storageNote ?? ""}`}
                 </p>

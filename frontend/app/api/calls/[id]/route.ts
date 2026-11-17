@@ -29,7 +29,8 @@ function finalise(p: Omit<Payload, "ready">): Payload {
 async function viaBackend(id: string): Promise<Payload | string> {
   const base = process.env.BACKEND_URL?.replace(/\/+$/, "");
   const key = process.env.LEADS_API_KEY;
-  if (!base || !key) return "BACKEND_URL or LEADS_API_KEY is not set, so the call was not saved.";
+  // No backend configured is a deliberate setup choice, not an error, so say nothing about saving.
+  if (!base || !key) return "";
   let res: Response;
   try {
     res = await fetch(`${base}/calls/${id}/sync`, {
@@ -92,7 +93,7 @@ async function viaVapi(id: string, storageNote: string): Promise<Payload | NextR
     summary,
     lead,
     stored: false,
-    storageNote,
+    storageNote: storageNote || null,
   });
 }
 
