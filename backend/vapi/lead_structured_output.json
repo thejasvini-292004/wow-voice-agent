@@ -1,0 +1,86 @@
+{
+  "type": "ai",
+  "name": "wow_lead_summary",
+  "description": "Summarise this outbound sales call about Whispers of the Wind villa plots near Nandi Hills and extract the lead qualification. Use 'unknown' for anything the customer did not clearly say. Do not guess.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "summary": {
+        "type": "string",
+        "description": "Two to four sentences for a sales manager: what the customer wants, how they fit, any objections, and the agreed next step."
+      },
+      "intent": {
+        "type": "string",
+        "enum": [
+          "self_use",
+          "investment",
+          "both",
+          "unknown"
+        ],
+        "description": "Why the customer would buy: own use or weekend home, investment, or both."
+      },
+      "geography_fit": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ],
+        "description": "yes if comfortable with the Nandi Hills / Devanahalli corridor, no if not."
+      },
+      "budget": {
+        "type": "string",
+        "description": "The budget in the customer's own words, e.g. '1.2 crore'. 'unknown' if not stated."
+      },
+      "budget_fit": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ],
+        "description": "yes if the budget covers the 92.4 lakh starting price, no if clearly below it."
+      },
+      "timeline_fit": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ],
+        "description": "yes if comfortable with December 2029 possession and phased delivery, no if not."
+      },
+      "objections": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Each concern the customer raised, one short phrase each. Empty if none."
+      },
+      "follow_up_interest": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ],
+        "description": "yes if the customer agreed to a call from a Property Expert, no if they declined."
+      },
+      "callback_preference": {
+        "type": "string",
+        "description": "When or how the customer wants to be called back, e.g. 'Saturday morning'. 'unknown' if not said."
+      }
+    },
+    "required": [
+      "summary",
+      "intent",
+      "geography_fit",
+      "budget",
+      "budget_fit",
+      "timeline_fit",
+      "objections",
+      "follow_up_interest",
+      "callback_preference"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+# Secrets: never commit these
+.env
+.env.local
+.env.*.local
+*.bak
+
+# Local backups made while fixing the app (they contain copies of .env files)
+_backup_before_fix/
+
+# Dependencies and build output
+node_modules/
+.next/
+.venv/
+__pycache__/
+.pytest_cache/
+next-env.d.ts
+*.tsbuildinfo
+
+# macOS
+.DS_Store

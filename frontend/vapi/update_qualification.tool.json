@@ -1,0 +1,32 @@
+{
+  "type": "function",
+  "async": true,
+  "function": {
+    "name": "update_qualification",
+    "description": "Record what the customer has revealed about one qualification checkpoint. Call it the moment you learn something about intent, geography, budget or timeline, including when the customer volunteers it unprompted. Call it again if their answer changes. Do not mention this tool to the customer.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "checkpoint": {
+          "type": "string",
+          "enum": ["intent", "geography", "budget", "timeline"],
+          "description": "intent = self-use vs investment. geography = comfort with the Nandi Hills / Devanahalli corridor. budget = fit with the Rs 92.4 lakh starting price. timeline = comfort with December 2029 possession and phased delivery."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["confirmed", "concern", "not_a_fit"],
+          "description": "confirmed = fits. concern = hesitant or conditional. not_a_fit = clearly does not fit."
+        },
+        "value": {
+          "type": "string",
+          "description": "Short plain-English finding, under 12 words. Example: 'Weekend home for the family'."
+        },
+        "quote": {
+          "type": "string",
+          "description": "The customer's own words that support this, if they said something quotable."
+        }
+      },
+      "required": ["checkpoint", "status", "value"]
+    }
+  }
+}
